@@ -1,8 +1,7 @@
 package Services;
-
-import org.w3c.dom.ls.LSOutput;
-
 import java.util.Scanner;
+
+import static Services.Despesas.*;
 
 public class Tanques {
     static Scanner scanner = new Scanner(System.in);
@@ -11,7 +10,14 @@ public class Tanques {
     private static double tanqueEtanol;
     private static double tanqueDiesel;
 
-    private static double valorGasolinaComum = 2.19;
+
+    public static void mostrarRelatorioDosTanques() {
+        System.out.println("Tanque de Gasolina Comum: " + getTanqueGasolinaComum() + " litros");
+        System.out.println("Tanque de Gasolina Aditivada: " + getTanqueGasolinaAditivada() + " litros");
+        System.out.println("Tanque de Etanol: " + getTanqueEtanol() + " litros");
+        System.out.println("Tanque de Diesel: " + getTanqueDiesel() + " litros");
+        GerenciamentoPosto.gerenciarPosto();
+    }
 
     public static void abastecerTanques() {
         int opcao;
@@ -31,9 +37,18 @@ public class Tanques {
                     System.out.println(abastecerTanqueGasolinaComum());
                     GerenciamentoPosto.gerenciarPosto();
                 }
-                /*case 2 -> abastecerTanqueGasolinaAditivada();
-                case 3 -> abastecerTanqueEtanol();
-                case 4 -> abastecerTanqueDiesel();*/
+                case 2 -> {
+                    System.out.println(abastecerTanqueGasolinaAditivada());
+                    GerenciamentoPosto.gerenciarPosto();
+                }
+                case 3 -> {
+                    System.out.println(abastecerTanqueEtanol());
+                    GerenciamentoPosto.gerenciarPosto();
+                }
+                case 4 -> {
+                    System.out.println(abastecerTanqueDiesel());
+                    GerenciamentoPosto.gerenciarPosto();
+                }
 
                 case 5 -> GerenciamentoPosto.gerenciarPosto();
                 default -> System.out.println("Opção inválida");
@@ -43,33 +58,106 @@ public class Tanques {
     }
 
     public static String abastecerTanqueGasolinaComum() {
-        double valorAAbastecer;
-        double valorAbastecido = 0;
+        double valorAbastecido;
+        double litrosAAbastecer;
 
         System.out.println("""
-                Digite a quantidade de litros a abastecer: 
+                Digite a quantidade de litros a abastecer:
                 """);
-        valorAAbastecer = scanner.nextInt();
+        litrosAAbastecer = scanner.nextInt();
+        valorAbastecido = litrosAAbastecer * getValorGasolinaComum();
 
-        valorAbastecido += (valorAAbastecer * getValorGasolinaComum());
+        if (litrosAAbastecer >= 1 && litrosAAbastecer < 20000) {
 
-        if (tanqueGasolinaComum < 20000) {
-            setTanqueGasolinaComum(getTanqueGasolinaComum() + valorAbastecido);
+            if ((tanqueGasolinaComum + litrosAAbastecer) < 20000) {
+                setTanqueGasolinaComum(getTanqueGasolinaComum() + litrosAAbastecer);
+                despesasGasolinaComumValor.add(valorAbastecido);
+                despesasGasolinaComumLitros.add(litrosAAbastecer);
+            } else {
+                System.out.println("O valor excede a capacidade do tanque");
+            }
         } else {
-            System.out.println("insira um valor válido");
+            System.out.println("A capacidade máxima de cada tanque é de 20000 litros. Insira um valor entre 1 e 20000");
         }
-        return "Você abasteceu " + valorAbastecido + " e a capacidade do tanque está em: " +getTanqueGasolinaComum() + " litros";
+        return "\nObrigado por usar os nossos serviços";
+    }
+
+    public static String abastecerTanqueGasolinaAditivada() {
+        double valorAbastecido;
+        double litrosAAbastecer;
+
+        System.out.println("""
+                Digite a quantidade de litros a abastecer:
+                """);
+        litrosAAbastecer = scanner.nextInt();
+        valorAbastecido = litrosAAbastecer * getValorGasolinaAditivada();
+
+        if (litrosAAbastecer >= 1 && litrosAAbastecer < 20000) {
+
+            if ((tanqueGasolinaAditivada + litrosAAbastecer) < 20000) {
+                setTanqueGasolinaAditivada(getTanqueGasolinaAditivada() + litrosAAbastecer);
+                despesasGasolinaAditivadaValor.add(valorAbastecido);
+                despesasGasolinaAditivadaLitros.add(litrosAAbastecer);
+            } else {
+                System.out.println("O valor excede a capacidade do tanque");
+            }
+        } else {
+            System.out.println("A capacidade máxima de cada tanque é de 20000 litros. Insira um valor entre 1 e 20000");
+        }
+        return "\nObrigado por usar os nossos serviços";
+    }
+
+    public static String abastecerTanqueEtanol() {
+        double valorAbastecido;
+        double litrosAAbastecer;
+
+        System.out.println("""
+                Digite a quantidade de litros a abastecer:
+                """);
+        litrosAAbastecer = scanner.nextInt();
+        valorAbastecido = litrosAAbastecer * getValorEtanol();
+
+        if (litrosAAbastecer >= 1 && litrosAAbastecer < 20000) {
+
+            if ((tanqueEtanol + litrosAAbastecer) < 20000) {
+                setTanqueEtanol(getTanqueEtanol() + litrosAAbastecer);
+                despesasEtanolValor.add(valorAbastecido);
+                despesasEtanolLitros.add(litrosAAbastecer);
+            } else {
+                System.out.println("O valor excede a capacidade do tanque");
+            }
+        } else {
+            System.out.println("A capacidade máxima de cada tanque é de 20000 litros. Insira um valor entre 1 e 20000");
+        }
+        return "\nObrigado por usar os nossos serviços";
+    }
+
+    public static String abastecerTanqueDiesel() {
+        double valorAbastecido;
+        double litrosAAbastecer;
+
+        System.out.println("""
+                Digite a quantidade de litros a abastecer:
+                """);
+        litrosAAbastecer = scanner.nextInt();
+        valorAbastecido = litrosAAbastecer * getValorDiesel();
+
+        if (litrosAAbastecer >= 1 && litrosAAbastecer < 20000) {
+
+            if ((tanqueDiesel + litrosAAbastecer) < 20000) {
+                setTanqueDiesel(getTanqueDiesel() + litrosAAbastecer);
+                despesasDieselValor.add(valorAbastecido);
+                despesasDieselLitros.add(litrosAAbastecer);
+            } else {
+                System.out.println("O valor excede a capacidade do tanque");
+            }
+        } else {
+            System.out.println("A capacidade máxima de cada tanque é de 20000 litros. Insira um valor entre 1 e 20000");
+        }
+        return "\nObrigado por usar os nossos serviços";
     }
 
     // Getters and Setters
-
-    public static Scanner getScanner() {
-        return scanner;
-    }
-
-    public static void setScanner(Scanner scanner) {
-        Tanques.scanner = scanner;
-    }
 
     public static double getTanqueGasolinaComum() {
         return tanqueGasolinaComum;
@@ -104,6 +192,18 @@ public class Tanques {
     }
 
     public static double getValorGasolinaComum() {
-        return valorGasolinaComum;
+        return 2.19;
+    }
+
+    public static double getValorGasolinaAditivada() {
+        return 2.29;
+    }
+
+    public static double getValorEtanol() {
+        return 1.19;
+    }
+
+    public static double getValorDiesel() {
+        return 1.39;
     }
 }

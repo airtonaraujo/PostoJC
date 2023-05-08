@@ -7,7 +7,7 @@ public class GerenciamentoPosto {
 
     public static void gerenciarPosto() {
         System.out.println("""
-                Escolha a operação desejada:
+                \nEscolha a operação desejada:
                 
                 1 - Abastecimento dos Tanques;
                 2 - Relatório dos Tanques;
@@ -23,9 +23,9 @@ public class GerenciamentoPosto {
 
             switch (opcao) {
                 case 1 -> Tanques.abastecerTanques();
-                //case 2 -> Tanques.mostrarRelatorioDosTanques();
+                case 2 -> Tanques.mostrarRelatorioDosTanques();
                 case 3 -> Vendas.mostrarRelatorioDasVendas();
-                case 4 -> Vendas.mostrarRelatorioDasDespesas();
+                case 4 -> Despesas.mostrarRelatorioDasDespesas();
                 case 5 -> Vendas.mostrarRelatorioDeLucros();
                 case 6 -> Menu.menuPrincipal();
                 default -> System.out.println("Opção inválida");

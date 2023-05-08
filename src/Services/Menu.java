@@ -24,7 +24,7 @@ public class Menu {
                 default -> System.out.println("Opção inválida");
             }
 
-        } while(opcao != 3);
+        } while(true);
     }
 
     public static void venderServicos() {

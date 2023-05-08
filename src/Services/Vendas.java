@@ -2,6 +2,8 @@ package Services;
 
 import java.util.Scanner;
 
+import static Services.Despesas.*;
+
 public class Vendas {
 
     private static int lucroLiquido;
@@ -10,8 +12,7 @@ public class Vendas {
     public static void mostrarRelatorioDasVendas() {
     }
 
-    public static void mostrarRelatorioDasDespesas() {
-    }
+
 
     public static void mostrarRelatorioDeLucros() {
         Scanner scanner = new Scanner(System.in);
