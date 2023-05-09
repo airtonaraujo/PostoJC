@@ -9,11 +9,11 @@ public class GerenciamentoPosto {
         System.out.println("""
                 \nEscolha a operação desejada:
                 
-                1 - Abastecimento dos Tanques;
-                2 - Relatório dos Tanques;
-                3 - Relatório de Vendas;
-                4 - Relatório de Despesas;
-                5 - Relatório de Lucros;
+                1 - Abastecimento dos Tanques
+                2 - Relatório dos Tanques
+                3 - Relatório de Vendas
+                4 - Relatório de Despesas
+                5 - Relatório de Lucros
                 6 - Voltar
                 """);
 
@@ -24,13 +24,13 @@ public class GerenciamentoPosto {
             switch (opcao) {
                 case 1 -> Tanques.abastecerTanques();
                 case 2 -> Tanques.mostrarRelatorioDosTanques();
-                case 3 -> Vendas.mostrarRelatorioDasVendas();
+                case 3 -> Despesas.mostrarRelatorioDasVendas();
                 case 4 -> Despesas.mostrarRelatorioDasDespesas();
-                case 5 -> Vendas.mostrarRelatorioDeLucros();
+                case 5 -> Despesas.mostrarRelatorioDeLucros();
                 case 6 -> Menu.menuPrincipal();
                 default -> System.out.println("Opção inválida");
             }
 
-        } while(opcao != 0);
+        } while(opcao != 6);
     }
 }

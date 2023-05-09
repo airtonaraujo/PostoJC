@@ -28,6 +28,6 @@ public class Menu {
     }
 
     public static void venderServicos() {
-        System.out.println("Menu de Vendas");
+        Vendas.menuVendas();
     }
 }

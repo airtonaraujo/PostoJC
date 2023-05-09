@@ -2,50 +2,28 @@ package Services;
 
 import java.util.Scanner;
 
-import static Services.Despesas.*;
-
 public class Vendas {
+    static Scanner scanner = new Scanner(System.in);
 
-    private static int lucroLiquido;
-    private static int lucroBruto;
-
-    public static void mostrarRelatorioDasVendas() {
-    }
-
-
-
-    public static void mostrarRelatorioDeLucros() {
-        Scanner scanner = new Scanner(System.in);
+    public static void menuVendas() {
+        System.out.println("""
+                \nEscolha a operação desejada:
+                
+                1 - Abastecimento
+                2 - Serviços
+                3 - Voltar
+                """);
         int opcao;
-        int lucro = 1+1;
-        System.out.println(lucro);
-        System.out.println("\n");
-        lucroBruto += lucro;
-        System.out.println(getLucroBruto());
-
-        do  {
-            System.out.println("1- Voltar");
+        do{
             opcao = scanner.nextInt();
-        } while (opcao != 1);
 
-        if (opcao == 1) {
-            GerenciamentoPosto.gerenciarPosto();
-        }
-    }
+            switch (opcao) {
+                case 1 -> Abastecimento.abastecerVeiculo();
+                case 2 -> PostoServicos.venderServicos();
+                case 3 -> Menu.menuPrincipal();
+                default -> System.out.println("Opção inválida");
+            }
 
-    public int getLucroLiquido() {
-        return lucroLiquido;
-    }
-
-    public void setLucroLiquido(int lucroLiquido) {
-        this.lucroLiquido = lucroLiquido;
-    }
-
-    public static int getLucroBruto() {
-        return lucroBruto;
-    }
-
-    public void setLucroBruto(int lucroBruto) {
-        this.lucroBruto = lucroBruto;
+        } while(opcao != 3);
     }
 }

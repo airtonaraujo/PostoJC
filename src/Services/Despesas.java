@@ -20,4 +20,9 @@ public class Despesas {
         System.out.println("Diesel: " + despesasDieselValor + " reais e " + despesasDieselLitros + " litros");
         GerenciamentoPosto.gerenciarPosto();
     }
+
+    public static void mostrarRelatorioDasVendas() {
+    }
+    public static void mostrarRelatorioDeLucros() {
+    }
 }
