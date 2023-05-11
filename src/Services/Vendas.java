@@ -21,7 +21,10 @@ public class Vendas {
                 case 1 -> Abastecimento.abastecerVeiculo();
                 case 2 -> PostoServicos.venderServicos();
                 case 3 -> Menu.menuPrincipal();
-                default -> System.out.println("Opção inválida");
+                default -> {
+                    System.out.println("Opção inválida");
+                    menuVendas();
+                }
             }
 
         } while(opcao != 3);

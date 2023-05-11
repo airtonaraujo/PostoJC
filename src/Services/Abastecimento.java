@@ -1,8 +1,9 @@
 package Services;
 
-import java.math.BigDecimal;
-import java.math.BigInteger;
 import java.util.Scanner;
+
+import static Services.Relatorios.abastecimentoGasolinaComumLitros;
+import static Services.Relatorios.abastecimentoGasolinaComumValor;
 
 public class Abastecimento {
     static Scanner scanner = new Scanner(System.in);
@@ -25,9 +26,9 @@ public class Abastecimento {
                     System.out.println("Tanque vazio!!!");
                     abastecerVeiculo();
                 }
-                int valor;
+                double valor;
                 System.out.println("Insira o valor a ser abastecido: R$ ");
-                valor = scanner.nextInt();
+                valor = scanner.nextDouble();
                 double litrosAbastecidos = valor / Tanques.getValorGasolinaComum();
                 if (litrosAbastecidos > Tanques.getTanqueGasolinaComum()) {
                     System.out.println("Não há combustível o suficiente!!!");
@@ -35,6 +36,8 @@ public class Abastecimento {
                 }
                 Tanques.setTanqueGasolinaComum(Tanques.getTanqueGasolinaComum() - litrosAbastecidos);
                 System.out.println("Você abasteceu " + litrosAbastecidos + " litros");
+                abastecimentoGasolinaComumValor.add(valor);
+                abastecimentoGasolinaComumLitros.add(litrosAbastecidos);
                 Vendas.menuVendas();
             }
             case 2 -> {
@@ -42,45 +45,57 @@ public class Abastecimento {
                     System.out.println("Tanque vazio!!!");
                     abastecerVeiculo();
                 }
-                int valor;
+                double valor;
                 System.out.println("Insira o valor a ser abastecido: R$ ");
-                valor = scanner.nextInt();
+                valor = scanner.nextDouble();
                 double litrosAbastecidos = valor / Tanques.getValorGasolinaAditivada();
                 if (litrosAbastecidos > Tanques.getTanqueGasolinaAditivada()) {
                     System.out.println("Não há combustível o suficiente!!!");
                     abastecerVeiculo();
                 }
+                Tanques.setTanqueGasolinaAditivada(Tanques.getTanqueGasolinaAditivada() - litrosAbastecidos);
+                System.out.println("Você abasteceu " + litrosAbastecidos + " litros");
+                Vendas.menuVendas();
             }
             case 3 -> {
                 if (Tanques.getTanqueEtanol() == 0) {
                     System.out.println("Tanque vazio!!!");
                     abastecerVeiculo();
                 }
-                int valor;
+                double valor;
                 System.out.println("Insira o valor a ser abastecido: R$ ");
-                valor = scanner.nextInt();
+                valor = scanner.nextDouble();
                 double litrosAbastecidos = valor / Tanques.getValorEtanol();
                 if (litrosAbastecidos > Tanques.getTanqueEtanol()) {
                     System.out.println("Não há combustível o suficiente!!!");
                     abastecerVeiculo();
                 }
+                Tanques.setTanqueEtanol(Tanques.getTanqueEtanol() - litrosAbastecidos);
+                System.out.println("Você abasteceu " + litrosAbastecidos + " litros");
+                Vendas.menuVendas();
             }
             case 4 -> {
                 if (Tanques.getTanqueDiesel() == 0) {
                     System.out.println("Tanque vazio!!!");
                     abastecerVeiculo();
                 }
-                int valor;
+                double valor;
                 System.out.println("Insira o valor a ser abastecido: R$ ");
-                valor = scanner.nextInt();
+                valor = scanner.nextDouble();
                 double litrosAbastecidos = valor / Tanques.getValorDiesel();
                 if (litrosAbastecidos > Tanques.getTanqueDiesel()) {
                     System.out.println("Não há combustível o suficiente!!!");
                     abastecerVeiculo();
                 }
+                Tanques.setTanqueDiesel(Tanques.getTanqueDiesel() - litrosAbastecidos);
+                System.out.println("Você abasteceu " + litrosAbastecidos + " litros");
+                Vendas.menuVendas();
             }
             case 5 -> Menu.menuPrincipal();
-            default -> System.out.println("Opção inválida");
+            default -> {
+                System.out.println("Opção inválida");
+                abastecerVeiculo();
+            }
         }
     }
 }

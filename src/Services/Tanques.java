@@ -1,7 +1,7 @@
 package Services;
 import java.util.Scanner;
 
-import static Services.Despesas.*;
+import static Services.Relatorios.*;
 
 public class Tanques {
     static Scanner scanner = new Scanner(System.in);
@@ -51,7 +51,10 @@ public class Tanques {
                 }
 
                 case 5 -> GerenciamentoPosto.gerenciarPosto();
-                default -> System.out.println("Opção inválida");
+                default -> {
+                    System.out.println("Opção inválida");
+                    abastecerTanques();
+                }
         }
     } while (opcao != 5);
 
@@ -64,15 +67,15 @@ public class Tanques {
         System.out.println("""
                 Digite a quantidade de litros a abastecer:
                 """);
-        litrosAAbastecer = scanner.nextInt();
+        litrosAAbastecer = scanner.nextDouble();
         valorAbastecido = litrosAAbastecer * getValorGasolinaComum();
 
         if (litrosAAbastecer >= 1 && litrosAAbastecer < 20000) {
 
             if ((tanqueGasolinaComum + litrosAAbastecer) < 20000) {
                 setTanqueGasolinaComum(getTanqueGasolinaComum() + litrosAAbastecer);
-                despesasGasolinaComumValor.add(valorAbastecido);
-                despesasGasolinaComumLitros.add(litrosAAbastecer);
+                reabastecimentoGasolinaComumValor.add(valorAbastecido);
+                reabastecimentoGasolinaComumLitros.add(litrosAAbastecer);
             } else {
                 System.out.println("O valor excede a capacidade do tanque");
             }
@@ -89,15 +92,15 @@ public class Tanques {
         System.out.println("""
                 Digite a quantidade de litros a abastecer:
                 """);
-        litrosAAbastecer = scanner.nextInt();
+        litrosAAbastecer = scanner.nextDouble();
         valorAbastecido = litrosAAbastecer * getValorGasolinaAditivada();
 
         if (litrosAAbastecer >= 1 && litrosAAbastecer < 20000) {
 
             if ((tanqueGasolinaAditivada + litrosAAbastecer) < 20000) {
                 setTanqueGasolinaAditivada(getTanqueGasolinaAditivada() + litrosAAbastecer);
-                despesasGasolinaAditivadaValor.add(valorAbastecido);
-                despesasGasolinaAditivadaLitros.add(litrosAAbastecer);
+                reabastecimentoGasolinaAditivadaValor.add(valorAbastecido);
+                reabastecimentoGasolinaAditivadaLitros.add(litrosAAbastecer);
             } else {
                 System.out.println("O valor excede a capacidade do tanque");
             }
@@ -114,15 +117,15 @@ public class Tanques {
         System.out.println("""
                 Digite a quantidade de litros a abastecer:
                 """);
-        litrosAAbastecer = scanner.nextInt();
+        litrosAAbastecer = scanner.nextDouble();
         valorAbastecido = litrosAAbastecer * getValorEtanol();
 
         if (litrosAAbastecer >= 1 && litrosAAbastecer < 20000) {
 
             if ((tanqueEtanol + litrosAAbastecer) < 20000) {
                 setTanqueEtanol(getTanqueEtanol() + litrosAAbastecer);
-                despesasEtanolValor.add(valorAbastecido);
-                despesasEtanolLitros.add(litrosAAbastecer);
+                reabastecimentoEtanolValor.add(valorAbastecido);
+                reabastecimentoEtanolLitros.add(litrosAAbastecer);
             } else {
                 System.out.println("O valor excede a capacidade do tanque");
             }
@@ -139,15 +142,15 @@ public class Tanques {
         System.out.println("""
                 Digite a quantidade de litros a abastecer:
                 """);
-        litrosAAbastecer = scanner.nextInt();
+        litrosAAbastecer = scanner.nextDouble();
         valorAbastecido = litrosAAbastecer * getValorDiesel();
 
         if (litrosAAbastecer >= 1 && litrosAAbastecer < 20000) {
 
             if ((tanqueDiesel + litrosAAbastecer) < 20000) {
                 setTanqueDiesel(getTanqueDiesel() + litrosAAbastecer);
-                despesasDieselValor.add(valorAbastecido);
-                despesasDieselLitros.add(litrosAAbastecer);
+                reabastecimentoDieselValor.add(valorAbastecido);
+                reabastecimentoDieselLitros.add(litrosAAbastecer);
             } else {
                 System.out.println("O valor excede a capacidade do tanque");
             }

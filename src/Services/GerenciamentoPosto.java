@@ -24,9 +24,9 @@ public class GerenciamentoPosto {
             switch (opcao) {
                 case 1 -> Tanques.abastecerTanques();
                 case 2 -> Tanques.mostrarRelatorioDosTanques();
-                case 3 -> Despesas.mostrarRelatorioDasVendas();
-                case 4 -> Despesas.mostrarRelatorioDasDespesas();
-                case 5 -> Despesas.mostrarRelatorioDeLucros();
+                case 3 -> Relatorios.mostrarRelatorioDasVendas();
+                case 4 -> Relatorios.mostrarRelatorioDasDespesas();
+                case 5 -> Relatorios.mostrarRelatorioDeLucros();
                 case 6 -> Menu.menuPrincipal();
                 default -> System.out.println("Opção inválida");
             }
