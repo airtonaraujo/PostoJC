@@ -9,6 +9,8 @@ public class Menu {
         int opcao;
         do{
             System.out.println("""
+                Bem-vindo(a) ao posto Jefferson Caminhões!
+                
                 Escolha a operação desejada:
                 
                 1- Gerenciamento do posto
