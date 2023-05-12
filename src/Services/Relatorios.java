@@ -3,6 +3,9 @@ package Services;
 import java.util.ArrayList;
 import java.util.List;
 
+import static Services.Lucros.*;
+import static Services.PostoServicos.*;
+
 public class Relatorios {
     static List<Double> reabastecimentoGasolinaComumValor = new ArrayList<>();
     static List<Double> reabastecimentoGasolinaComumLitros = new ArrayList<>();
@@ -13,7 +16,6 @@ public class Relatorios {
     static List<Double> reabastecimentoDieselValor = new ArrayList<>();
     static List<Double> reabastecimentoDieselLitros = new ArrayList<>();
 
-
     static List<Double> abastecimentoGasolinaComumValor = new ArrayList<>();
     static List<Double> abastecimentoGasolinaComumLitros = new ArrayList<>();
     static List<Double> abastecimentoGasolinaAditivadaValor = new ArrayList<>();
@@ -23,18 +25,34 @@ public class Relatorios {
     static List<Double> abastecimentoDieselValor = new ArrayList<>();
     static List<Double> abastecimentoDieselLitros = new ArrayList<>();
 
+
+
     public static void mostrarRelatorioDasVendas() {
-        System.out.println("\nO total arrecadado em abastecimento de Gasolina Comum foi: " +totalDespesasValor(abastecimentoGasolinaComumValor) + " reais");
-        System.out.println("Foram vendidos " +totalDespesasValor(abastecimentoGasolinaComumLitros) + " litros de Gasolina Comum");
+        System.out.println("\nO total arrecadado em abastecimento de Gasolina Comum foi: " + exibirTotalDespesasValor(abastecimentoGasolinaComumValor) + " reais");
+        System.out.println("Foram vendidos " + exibirTotalDespesasLitros(abastecimentoGasolinaComumLitros) + " litros de Gasolina Comum");
 
-        System.out.println("\nO total arrecadado em abastecimento de Gasolina Aditivada foi: " +totalDespesasValor(abastecimentoGasolinaAditivadaValor) + " reais");
-        System.out.println("Foram vendidos " +totalDespesasValor(abastecimentoGasolinaAditivadaLitros) + " litros de Gasolina Comum");
+        System.out.println("\nO total arrecadado em abastecimento de Gasolina Aditivada foi: " + exibirTotalDespesasValor(abastecimentoGasolinaAditivadaValor) + " reais");
+        System.out.println("Foram vendidos " + exibirTotalDespesasLitros(abastecimentoGasolinaAditivadaLitros) + " litros de Gasolina Comum");
 
-        System.out.println("\nO total arrecadado em abastecimento de Etanol foi: " +totalDespesasValor(abastecimentoEtanolValor) + " reais");
-        System.out.println("Foram vendidos " +totalDespesasValor(abastecimentoEtanolLitros) + " litros de Gasolina Comum");
+        System.out.println("\nO total arrecadado em abastecimento de Etanol foi: " + exibirTotalDespesasValor(abastecimentoEtanolValor) + " reais");
+        System.out.println("Foram vendidos " + exibirTotalDespesasLitros(abastecimentoEtanolLitros) + " litros de Gasolina Comum");
 
-        System.out.println("\nO total arrecadado em abastecimento de Diesel foi: " +totalDespesasValor(abastecimentoDieselValor) + " reais");
-        System.out.println("Foram vendidos " +totalDespesasValor(abastecimentoDieselLitros) + " litros de Gasolina Comum");
+        System.out.println("\nO total arrecadado em abastecimento de Diesel foi: " + exibirTotalDespesasValor(abastecimentoDieselValor) + " reais");
+        System.out.println("Foram vendidos " + exibirTotalDespesasLitros(abastecimentoDieselLitros) + " litros de Gasolina Comum");
+
+
+        System.out.println("\nForam realizados " +servicoDuchaEcologicaQtd + " serivços de Ducha Ecológica.");
+        System.out.println("Foi arrecadado " +servicoDuchaEcologicaValor + "reais.");
+
+        System.out.println("\nForam realizados " +servicoTrocaOleoQtd + " serivços de Ducha Ecológica.");
+        System.out.println("Foi arrecadado " +servicoTrocaOleoValor + "reais.");
+
+        System.out.println("\nForam realizados " +servicoBalanceamentoQtd + " serivços de Ducha Ecológica.");
+        System.out.println("Foi arrecadado " +servicoBalanceamentoValor + "reais.");
+
+        System.out.println("\nForam realizados " +servicoCafezinQtd + " serivços de Ducha Ecológica.");
+        System.out.println("Foi arrecadado " +servicoCafezinValor + "reais.");
+        GerenciamentoPosto.gerenciarPosto();
     }
 
     public static void mostrarRelatorioDasDespesas() {
@@ -43,19 +61,19 @@ public class Relatorios {
         System.out.println("Etanol: " + reabastecimentoEtanolValor + " reais e " + reabastecimentoEtanolLitros + " litros");
         System.out.println("Diesel: " + reabastecimentoDieselValor + " reais e " + reabastecimentoDieselLitros + " litros");
 
-        System.out.println("\nO total em litros de Gasolina Comum: " +totalDespesasLitros(reabastecimentoGasolinaComumLitros) + "l");
-        System.out.println("O total em litros de Gasolina Aditivada: " +totalDespesasLitros(reabastecimentoGasolinaAditivadaLitros) + "l");
-        System.out.println("O total em litros de Etanol: " +totalDespesasLitros(reabastecimentoEtanolLitros) + "l");
-        System.out.println("O total em litros de Diesel: " +totalDespesasLitros(reabastecimentoDieselLitros) + "l");
+        System.out.println("\nO total em litros de Gasolina Comum: " + exibirTotalDespesasLitros(reabastecimentoGasolinaComumLitros) + "l");
+        System.out.println("O total em litros de Gasolina Aditivada: " + exibirTotalDespesasLitros(reabastecimentoGasolinaAditivadaLitros) + "l");
+        System.out.println("O total em litros de Etanol: " + exibirTotalDespesasLitros(reabastecimentoEtanolLitros) + "l");
+        System.out.println("O total em litros de Diesel: " + exibirTotalDespesasLitros(reabastecimentoDieselLitros) + "l");
 
-        System.out.println("\nO valor total em Gasolina Comum: " +totalDespesasValor(reabastecimentoGasolinaComumValor) + " reais");
-        System.out.println("O valor total em Gasolina Aditivada: " +totalDespesasValor(reabastecimentoGasolinaAditivadaValor) + " reais");
-        System.out.println("O valor total em Gasolina Etanol: " +totalDespesasValor(reabastecimentoEtanolValor) + " reais");
-        System.out.println("O valor total em Gasolina Diesel: " +totalDespesasValor(reabastecimentoDieselValor) + " reais");
+        System.out.println("\nO valor total em Gasolina Comum: " + exibirTotalDespesasValor(reabastecimentoGasolinaComumValor) + " reais");
+        System.out.println("O valor total em Gasolina Aditivada: " + exibirTotalDespesasValor(reabastecimentoGasolinaAditivadaValor) + " reais");
+        System.out.println("O valor total em Gasolina Etanol: " + exibirTotalDespesasValor(reabastecimentoEtanolValor) + " reais");
+        System.out.println("O valor total em Gasolina Diesel: " + exibirTotalDespesasValor(reabastecimentoDieselValor) + " reais");
         GerenciamentoPosto.gerenciarPosto();
     }
 
-    private static double totalDespesasValor(List<Double> combustivel) {
+    static double exibirTotalDespesasValor(List<Double> combustivel) {
         double totalValor = 0;
 
         for (Double item: combustivel) {
@@ -63,7 +81,7 @@ public class Relatorios {
         }
         return totalValor;
     }
-    private static double totalDespesasLitros(List<Double> combustivel) {
+    static double exibirTotalDespesasLitros(List<Double> combustivel) {
         double totalLitros = 0;
         for (Double item: combustivel) {
             totalLitros += item;
@@ -72,7 +90,13 @@ public class Relatorios {
     }
 
     public static void mostrarRelatorioDeLucros() {
-        System.out.println("\nNao ta pronto ué, eu falei");
+        System.out.println("\nO lucro bruto com abastecimento de combustível foi de: R$" +exibirLucroBrutoAbastecimento());
+        System.out.println("O lucro líquido com abastecimento de combustível foi de: R$" +exibirLucroLiquidoAbastecimento());
+
+        System.out.println("\nO lucro bruto com os serviços do posto foi de: R$" +exibirLucroServicos());
+
+        System.out.println("\nO lucro bruto total do posto é de: " + (exibirLucroBrutoAbastecimento() + exibirLucroServicos()));
+        System.out.println("O lucro líquido total do posto é de: " + (exibirLucroLiquidoAbastecimento() + exibirLucroServicos()));
         GerenciamentoPosto.gerenciarPosto();
     }
 }

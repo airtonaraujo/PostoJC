@@ -28,7 +28,10 @@ public class GerenciamentoPosto {
                 case 4 -> Relatorios.mostrarRelatorioDasDespesas();
                 case 5 -> Relatorios.mostrarRelatorioDeLucros();
                 case 6 -> Menu.menuPrincipal();
-                default -> System.out.println("Opção inválida");
+                default -> {
+                    System.out.println("Opção inválida");
+                    gerenciarPosto();
+                }
             }
 
         } while(opcao != 6);
